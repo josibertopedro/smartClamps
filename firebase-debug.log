@@ -1,0 +1,27 @@
+[debug] [2024-03-26T01:49:46.308Z] ----------------------------------------------------------------------
+[debug] [2024-03-26T01:49:46.311Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\asusf\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-03-26T01:49:46.311Z] CLI Version:   13.5.2
+[debug] [2024-03-26T01:49:46.312Z] Platform:      win32
+[debug] [2024-03-26T01:49:46.312Z] Node Version:  v20.9.0
+[debug] [2024-03-26T01:49:46.312Z] Time:          Mon Mar 25 2024 22:49:46 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2024-03-26T01:49:46.312Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-03-26T01:49:46.394Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"rules"}
+[debug] [2024-03-26T01:49:46.398Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-03-26T01:49:46.398Z] > authorizing via signed-in user (jpedrorodrigues2019@gmail.com)
+[debug] [2024-03-26T01:49:46.399Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"rules"}
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\asusf\OneDrive\Área de Trabalho\smart\smart
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
