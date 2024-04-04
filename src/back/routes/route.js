@@ -3,8 +3,12 @@ import { getAnalytics } from 'firebase/analytics';
 import { getAuth } from 'firebase/auth';
 import LoginForm from '../../front/login';
 import Apresentacao from '../../front/apresentacao';
+import Home from '../../front/home';
+import Recuperacao from '../../front/recuperação';
+import Suporte from '../../front/suporte';
+import tutorial from '../../front/tutorial';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import Tutorial from '../../front/tutorial';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAxdPHSnBVV5idYyM7bQ94kfi7SVufqVtc",
@@ -23,9 +27,13 @@ function AppRoute() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<LoginForm/>} />
-        <Route path="/login" element={<LoginForm/>} />
-        <Route path="/apresentacao" element={<Apresentacao/>} />
+        <Route path="/" element={<Apresentacao />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/recuperacao" element={<Recuperacao />} />
+        <Route path="/tutorial" element={<Tutorial />} />
+        <Route path="/suporte" element={<Suporte />} />
+        
       </Routes>
     </BrowserRouter>
   );
