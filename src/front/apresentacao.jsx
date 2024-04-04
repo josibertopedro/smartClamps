@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './apresentacao.css';  
+import logo from './imagens/logo.png'
+import loading from './imagens/Loading.png'
 
 export default function Apresentacao() {
   const navigate = useNavigate();
@@ -16,10 +18,10 @@ export default function Apresentacao() {
   return (
     <div className="apresentacao-container-logo">
       <div className="imagem-container-logo">
-        <img src="./imagens/logo.png" alt="logo" className="imagem" />
+        <img src={logo} alt="logo" className="imagem" />
       </div>
       <div className="imagem-container-loading">
-        <img src="./imagens/Loading.png" alt="load" className="imagem" />
+        <img src={loading} alt="load" className="imagem" />
       </div>
       
     </div>

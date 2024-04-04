@@ -4,6 +4,8 @@ import { useSignInWithEmailAndPassword, useSendPasswordResetEmail } from 'react-
 import { Link } from 'react-router-dom';
 import { auth } from '../back/routes/route';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import './login.css'
+import logo from './imagens/logo.png'
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -58,7 +60,7 @@ export default function LoginForm() {
   return (
     <div className="login-container">
       <div className="logo-container">
-        <img src="./imagens/logo.png" className='logo-sheet' alt="logo" />
+        <img src={logo} className='logo-sheet' alt="logo" />
       </div>
       <div className="form-container">
         <div className='circle-container-2'>

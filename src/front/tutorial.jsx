@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaUser, FaSignOutAlt, FaSearch } from 'react-icons/fa';
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import './tutorial.css'
 
 function YouTubeVideo({ videoId, title, description }) {
   return (
