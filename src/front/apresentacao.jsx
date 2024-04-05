@@ -21,7 +21,7 @@ export default function Apresentacao() {
         <img src={logo} alt="logo" className="imagem" />
       </div>
       <div className="imagem-container-loading">
-        <img src={loading} alt="load" className="imagem" />
+        <img src={loading} alt="load" className="imagem2" />
       </div>
       
     </div>
