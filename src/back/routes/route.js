@@ -10,6 +10,7 @@ import tutorial from '../../front/tutorial';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Tutorial from '../../front/tutorial';
 import Profile from '../../front/profile';
+import Relatorios from '../../front/relatorios';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAxdPHSnBVV5idYyM7bQ94kfi7SVufqVtc",
@@ -35,7 +36,8 @@ function AppRoute() {
         <Route path="/tutorial" element={<Tutorial />} />
         <Route path="/suporte" element={<Suporte />} />
         <Route path="/profile" element={<Profile />} />
-        
+        <Route path="/relatorios" element={<Relatorios />} />
+
       </Routes>
     </BrowserRouter>
   );
