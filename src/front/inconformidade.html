@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatórios - SmartClamps</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+
+  .reports-container {
+    background-color: #ffffff;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #0000ff;
+    border-radius: 4px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .seta-volta {
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .logo img {
+    max-height: 50px;
+    width: auto;
+  }
+
+  @media (max-width: 768px) {
+    .logo img {
+      max-height: 30px;
+    }
+  }
+
+  .linha-separadora {
+    height: 1px;
+    background-color: #cccccc;
+    margin: 20px 0; /* Espaçamento acima e abaixo da linha */
+  }
+
+  .titulo-relatorio {
+    font-size: 24px;
+    text-align: left; /* Alinha o título à esquerda */
+    margin-bottom: 20px;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: start; /* Alinha os botões à esquerda */
+    margin-bottom: 20px;
+  }
+
+  .tab {
+    padding: 10px 20px;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    background-color: #eeeeee;
+    margin-right: 5px; /* Espaçamento entre os botões */
+  }
+
+  .tab:hover {
+    background-color: #ddd;
+  }
+
+  .tab.active {
+    background-color: #dddddd;
+  }
+
+  .filtro select {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    margin-bottom: 20px;
+  }
+
+  .container-tabela {
+    overflow: auto;
+  }
+
+  .tabela-relatorio .cabecalho-tabela {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #eeeeee;
+    font-weight: bold;
+  }
+
+  .linha-tabela {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Adicionado para alinhar os itens verticalmente */
+    padding: 10px;
+    border-bottom: 1px solid #cccccc;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .status.erro {
+    color: red;
+  }
+
+</style>
+</head>
+<body>
+<div class="reports-container">
+  <div class="header">
+    <div class="seta-volta">←</div>
+    <div class="logo">
+      <img src="SmartClamp-Logo (1).png" alt="Logo" class="logo-img">
+    </div>
+  </div>
+  <div class="linha-separadora"></div>
+  <h2 class="titulo-relatorio">Relatórios</h2>
+  <div class="tabs">
+    <button class="tab">Procedimentos</button>
+    <button class="tab active">Inconformidades</button>
+  </div>
+  <div class="linha-separadora"></div> <!-- Linha abaixo dos botões -->
+  <div class="filtro">
+    <select name="filter" id="filter">
+      <option value="">Filtrar por</option>
+      <!-- Opções adicionais de filtro seriam adicionadas aqui -->
+    </select>
+  </div>
+  <div class="container-tabela">
+    <div class="tabela-relatorio">
+      <div class="cabecalho-tabela">
+        <span style="flex: 1;">Instituição</span>
+        <span style="flex: 1.5;">Profissional responsável</span> <!-- Adicionando espaço maior -->
+        <span style="flex: 2;">Inconformidade</span>
+        <span style="flex: 1;">Data</span>
+        <span style="flex: 1;">Situação</span>
+      </div>
+      <div class="linha-tabela">
+        <span style="flex: 1;">Z</span>
+        <span style="flex: 1.5;">Beltrano</span> <!-- Adicionando espaço maior -->
+        <span style="flex: 2;">Extravio</span>
+        <span style="flex: 1;">xx/xx/xxxx</span>
+        <span style="flex: 1;" class="status erro">✖</span>
+      </div>
+      <div class="linha-tabela">
+        <span style="flex: 1;">X</span>
+        <span style="flex: 1.5;">Fulano</span> <!-- Adicionando espaço maior -->
+        <span style="flex: 2;">Atraso</span>
+        <span style="flex: 1;">xx/xx/xxxx</span>
+        <span style="flex: 1;" class="status erro">✖</span>
+      </div>
+      <div class="linha-tabela">
+        <span style="flex: 1;">Y</span>
+        <span style="flex: 1.5;">Sicrano</span> <!-- Adicionando espaço maior -->
+        <span style="flex: 2;">Erro de registro</span>
+        <span style="flex: 1;">xx/xx/xxxx</span>
+        <span style="flex: 1;" class="status erro">✖</span>
+      </div>
+      <div class="linha-tabela">
+        <span style="flex: 1;">W</span>
+        <span style="flex: 1.5;">Ciclano</span> <!-- Adicionando espaço maior -->
+        <span style="flex: 2;">Falta de material</span>
+        <span style="flex: 1;">xx/xx/xxxx</span>
+        <span style="flex: 1;" class="status erro">✖</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

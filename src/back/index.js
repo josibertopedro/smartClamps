@@ -130,6 +130,6 @@ app.post("/atualizar", atualizarUsuarioPost);
 app.get("/deletar", deletarUsuario);
 app.post("/deletar", deletarUsuarioGet);
 
-app.listen(3000, () => {
+app.listen(8080, () => {
   console.log("Servidor up");
 });
