@@ -1,39 +1,39 @@
 import React from 'react';
 import MUIDataTable from "mui-datatables";
 
-export default function Relatorios() {
+export default function Cadastro() {
 
   const options = {
     selectableRows: false
   }
   const data = [
-    ["João", "Cardiologia", "Ativo", "2024-04-15"],
-    ["Maria", "Ortopedia", "Inativo", "2024-04-16"],
-    ["Pedro", "Pediatria", "Ativo", "2024-04-17"],
+    ["Fulano", "X", "Cardiologista", "2024-04-15"],
+    ["Sicrano", "y", "Ortopedista", "2024-04-16"],
+    ["Beltrano", "X", "Enfermeiro", "2024-04-17"],
     // Adicione mais linhas conforme necessário
   ];
 
   const columns = [
     {
-      name: "Profissionais Responsáveis",
+      name: "Nome",
       options: {
         filter: true,
       }
     },
     {
-      name: "Especialidade",
+      name: "Coren",
       options: {
         filter: true,
       }
     },
     {
-      name: "Situação",
+      name: "Cargo",
       options: {
         filter: true,
       }
     },
     {
-      name: "Data",
+      name: "Data de cadastro",
       options: {
         filter: true,
       }
