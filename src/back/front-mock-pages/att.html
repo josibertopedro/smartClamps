@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <title>Atualizar Usuário</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <form id="updateForm" action="/atualizar" method="POST">
+      <div>
+        <label>Você está editando o usuário: </label>
+        <input id="userIdInput" type="text" name="userId" readonly />
+      </div>
+      <div>
+        <label> Novo Nome: </label>
+        <input type="text" name="nome" />
+      </div>
+      <div>
+        <label> Nova Profissão: </label>
+        <input type="text" name="profissao" />
+      </div>
+      <div>
+        <input type="submit" value="Atualizar" />
+      </div>
+    </form>
+
+    <script>
+      // Extrair o userId da URL
+      const userId = window.location.pathname.split('/').pop();
+
+      // Preencher o valor do input com o userId
+      document.getElementById('userIdInput').value = userId;
+    </script>
+  </body>
+</html>
