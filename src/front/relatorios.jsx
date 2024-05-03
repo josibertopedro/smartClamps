@@ -2,6 +2,10 @@ import React from 'react';
 import MUIDataTable from "mui-datatables";
 
 export default function Relatorios() {
+
+  const options = {
+    selectableRows: false
+  }
   const data = [
     ["João", "Cardiologia", "Ativo", "2024-04-15"],
     ["Maria", "Ortopedia", "Inativo", "2024-04-16"],
@@ -41,9 +45,7 @@ export default function Relatorios() {
       title={"Lista de Profissionais"}
       data={data}
       columns={columns}
-      options={{
-        filterType: 'checkbox',
-      }}
+      options={{options}}
     />
   );
 }
