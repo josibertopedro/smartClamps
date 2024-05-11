@@ -1,4 +1,4 @@
-import './profile.css'
+import './css/profile.css'
 import logo from './imagens/SmartClamp-Logo.png'
 import Vector from './imagens/Vector.png'
 

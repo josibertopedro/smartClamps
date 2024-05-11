@@ -4,7 +4,7 @@ import { useSignInWithEmailAndPassword, useSendPasswordResetEmail } from 'react-
 import { Link } from 'react-router-dom';
 import { auth } from '../back/routes/route';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import './login.css'
+import './css/login.css'
 import logo from './imagens/logo.png'
 
 export default function LoginForm() {

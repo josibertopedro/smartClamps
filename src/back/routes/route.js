@@ -12,6 +12,8 @@
  import Profile from '../../front/profile';
  import Relatorios from '../../front/relatorios';
  import Cadastro from '../../front/cadastro';
+import Problem from '../../front/problem-register';
+import Ok from '../../front/ok-register';
 
  const firebaseConfig = {
    apiKey: "AIzaSyAxdPHSnBVV5idYyM7bQ94kfi7SVufqVtc",
@@ -39,6 +41,8 @@
          <Route path="/profile" element={<Profile />} />
          <Route path="/relatorios" element={<Relatorios />} />
          <Route path="/cadastro" element={<Cadastro />} />
+         <Route path="/problem" element={<Problem />} />
+         <Route path="/ok" element={<Ok />} />
        </Routes>
      </BrowserRouter>
    );
