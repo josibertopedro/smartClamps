@@ -2,7 +2,8 @@ import React from 'react';
 import { FaUser, FaBook, FaFileAlt, FaQuestionCircle, FaSignOutAlt } from 'react-icons/fa';
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-
+import './css/home.css'
+import Logo from './imagens/SmartLogo.png'
 export default function Navbar() {
     const navigate = useNavigate();
 
@@ -26,26 +27,35 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="navbar">
+    <div className="logo-icon-container">
         <div className="logo">
-          <img src="/logo" alt="Logo" />
+          <img src={Logo} alt="Logo" />
         </div>
         <div className="login-icon">
-          <FaUser />
+          <FaUser className={"user-icon"} style={{ fontSize: "72px" }} />
         </div>
+        <div className="line"></div>
+      </div>
+      <div className="logout-button">
+          <button className="button" onClick={handleLogout}><FaSignOutAlt />Sair</button>
+        </div>
+        <div className='circle-container'>
+          <div className='circle'></div>
+        </div>
+        <div className='circle-container-2'>
+          <div className='circle-2'></div>
+        </div>
+      <nav className="navbar">
         <div className="buttons">
           <button className="button">Cadastro</button>
           <button className="button">Relatórios</button>
           <button className="button" onClick={handleTutorialsClick}>
             <FaBook /> Tutoriais
           </button>
-          <button className="link">Sem saber para onde ir? Acesse</button>
+          <p className="link">Sem saber para onde ir? Acesse</p>
         </div>
         <div className="support-link">
-          <button className="link">Suporte</button>
-        </div>
-        <div className="logout-button">
-          <button className="button" onClick={handleLogout}><FaSignOutAlt />Sair</button>
+          <button className="button">Suporte</button>
         </div>
       </nav>
       <footer className="footer">

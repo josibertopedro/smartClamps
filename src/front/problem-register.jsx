@@ -1,5 +1,5 @@
 import React from "react"
-import Logo from "./imagens/logo.png"
+import Logo from "./imagens/SmartLogo.png"
 import './css/problem-register.css'
 export default function Problem() {
     return (

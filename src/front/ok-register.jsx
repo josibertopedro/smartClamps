@@ -1,5 +1,5 @@
 import React from "react"
-import Logo from "./imagens/logo.png"
+import Logo from "./imagens/SmartLogo.png"
 import './css/ok-register.css'
 import Logo2 from "./imagens/Logo.jpg"
 export default function Ok () {
