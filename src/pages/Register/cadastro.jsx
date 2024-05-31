@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MUIDataTable from "mui-datatables";
 import Logo from '../../assets/SmartLogo.png'
 import { createTheme, ThemeProvider, TextField, Button, IconButton, Avatar } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import '../Register/cadastro.css'
+import { db } from '../../services/firebaseConfig.js'
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 const customTheme = createTheme({
   components: {
@@ -68,28 +70,32 @@ const customTheme = createTheme({
   },
 });
 
-function Tabela1() {
-  const data = [
-    ["João", "X", "Instrumentador Cirúrgico", "2024-04-15"],
-    ["Maria", "Y", "Circulante", "2024-04-16"],
-    ["Pedro", "A", "Circulante", "2024-04-17"],
-  ];
+
+
+function Tabela1({ data }) {
 
   const columns = [
-    { name: "NOME" },
-    { name: "COREN" },
-    { name: "CARGO" },
-    { name: "Data de cadastro" },
+    { name: "nomeCompleto", label: "NOME" },
+    { name: "conselhoDeClasse", label: "COREN" },
+    { name: "especialidade", label: "CARGO" },
+    { name: "dataCadastro", label: "Data de cadastro" },
   ];
 
   const options = {
     selectableRows: 'none',
   };
 
+  const filteredData = data.map(item => ({
+    nomeCompleto: item.nomeCompleto,
+    conselhoDeClasse: item.conselhoDeClasse,
+    especialidade: item.especialidade,
+    dataCadastro: item.dataCadastro,
+  }));
+
   return (
     <MUIDataTable
       title={"Profissionais Cadastrados"}
-      data={data}
+      data={filteredData}
       columns={columns}
       options={options}
     />
@@ -118,9 +124,35 @@ function Cadastrar() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica para enviar os dados do formulário
+
+    try {
+      await addDoc(collection(db, 'professionals'), {
+        nomeCompleto: formValues.nomeCompleto,
+        email: formValues.email,
+        cpf: formValues.cpf,
+        conselhoDeClasse: formValues.conselhoDeClasse,
+        setor: formValues.setor,
+        especialidade: formValues.especialidade,
+        dataCadastro: new Date().toLocaleDateString(),
+      });
+  
+      console.log('Cadastro realizado com sucesso!');
+      // Opcional: limpar os valores do formulário após o envio
+      setFormValues({
+        nomeCompleto: '',
+        email: '',
+        cpf: '',
+        conselhoDeClasse: '',
+        setor: '',
+        especialidade: '',
+        senha: '',
+        confirmarSenha: '',
+      });
+    } catch (error) {
+      console.error('Erro ao cadastrar:', error);
+    }
     console.log(formValues);
   };
 
@@ -225,8 +257,20 @@ function Cadastrar() {
   );
 }
 
+
 function Relatorios() {
   const [showTabela, setShowTabela] = useState(1);
+  const [cadastros, setCadastros] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(collection(db, 'professionals'));
+      const docsData = querySnapshot.docs.map(doc => doc.data());
+      setCadastros(docsData);
+    };
+
+    fetchData();
+  }, []);
 
   return (
   <>
@@ -246,7 +290,7 @@ function Relatorios() {
         </button>
       </div>
       <div className='table-container'>
-        {showTabela === 1 ? <Tabela1 /> : <Cadastrar />}
+        {showTabela === 1 ? <Tabela1 data={cadastros} /> : <Cadastrar />}
       </div>
       </div>
     </ThemeProvider>
