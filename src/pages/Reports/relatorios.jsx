@@ -3,6 +3,9 @@ import MUIDataTable from "mui-datatables";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Button } from '@mui/material';
 import '../Reports/relatorios.css'
+import { useEffect } from 'react';
+import { db } from '../../services/firebaseConfig.js'
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 const customTheme = createTheme({
   overrides: {
@@ -15,50 +18,55 @@ const customTheme = createTheme({
   },
 });
 
-function Tabela1() {
-  const data = [
-    ["João", "Cardiologia", "Ativo", "2024-04-15"],
-    ["Maria", "Ortopedia", "Inativo", "2024-04-16"],
-    ["Pedro", "Pediatria", "Ativo", "2024-04-17"],
-  ];
+function Tabela1({data}) {
 
   const columns = [
-    { name: "Profissionais Responsáveis" },
-    { name: "Especialidade" },
-    { name: "Situação" },
-    { name: "Data" },
+    { name: "profissionaisResp", label: "Profissionais Responsáveis" },
+    { name: "especialidade", label: "Especialidade"  },
+    { name: "situacao", label: "Situação" },
+    { name: "data", label: "Data" },
   ];
 
   const options = {
     selectableRows: 'none',
   };
 
+  const filteredData = data.map(item => ({
+    profissionaisResp: item.profissionaisResp,
+    especialidade: item.especialidade,
+    situacao: item.situacao,
+    data: item.data ? new Date(item.data.seconds * 1000).toLocaleDateString() : '',
+  }));
+
   return (
     <MUIDataTable
       title={"Procedimentos"}
-      data={data}
+      data={filteredData}
       columns={columns}
       options={options}
     />
   );
 }
 
-function Tabela2() {
-  const data = [
-    ["A", "Fulano", "Extravio", "2024-05-01", "Ativo"],
-    ["B", "Beltrano", "Extravio", "2024-05-02","Inativo"],
-    ["C", "Cicrano", "Extravio", "2024-05-03", "Ativo"],
-    ["D", "Fulano", "Extravio", "2024-05-01", "Ativo"],
-    
-  ];
+function Tabela2({data}) {
+
+
 
   const columns = [
-    { name: "Instituição" },
-    { name: "Profissional Responsável" },
-    { name: "Inconformidade" },
-    { name: "Data" },
-    { name: "Situação" },
+    { name: "instituicao", label: "Instituição"},
+    { name: "profissionalResp", label: "Profissionais Responsáveis" },
+    { name: "inconformidade", label:"Inconformidade" },
+    { name: "data", label:"Data"},
+    { name: "situacao", label:"Situação" },
   ];
+
+  const filteredData2 = data.map(item => ({
+    profissionalResp: item.profissionalResp,
+    inconformidade: item.inconformidade,
+    instituicao: item.instituicao,
+    situacao: item.situacao,
+    data: item.data ? new Date(item.data.seconds * 1000).toLocaleDateString() : '',
+  }));
 
   const options = {
     selectableRows: 'none',
@@ -67,7 +75,7 @@ function Tabela2() {
   return (
     <MUIDataTable
       title={"Inconformidades"}
-      data={data}
+      data={filteredData2}
       columns={columns}
       options={options}
     />
@@ -76,6 +84,23 @@ function Tabela2() {
 
 function Relatorios() {
   const [showTabela, setShowTabela] = useState(1);
+  const [procedimentos, setProcedimentos] = useState([])
+  const [inconformidade, setInconformidade] = useState([])
+
+  useEffect(() => {
+    const fetchData = async() => {
+      const querySnapshot = await getDocs(collection(db, 'procedimentos'))
+      const docsData = querySnapshot.docs.map(doc => doc.data())
+      setProcedimentos(docsData)
+    }
+    const fetchData2 = async() => {
+      const querySnapshot = await getDocs(collection(db, "inconformidades"))
+      const docsData = querySnapshot.docs.map(doc => doc.data())
+      setInconformidade(docsData)
+    }
+    fetchData2()
+    fetchData()
+  }, [])
 
   const getMuiTheme = () => createTheme({
     components: {
@@ -125,7 +150,7 @@ function Relatorios() {
         </button>
         </div>
       <div className='table-container'>
-        {showTabela === 1 ? <Tabela1 /> : <Tabela2 />}
+        {showTabela === 1 ? <Tabela1 data={procedimentos} /> : <Tabela2 data={inconformidade} />}
       </div>
       </div>
     </ThemeProvider>
