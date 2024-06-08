@@ -62,7 +62,6 @@ function MainMenu() {
               <FaQuestionCircle /> Tutoriais
             </button>
           </Link>
-          
         </div>
 
         <div className="support-link">
@@ -72,7 +71,7 @@ function MainMenu() {
           </Link>
         </div>
       
-      <footer className="footer">
+      <footer className="footer-home">
         <span className="span-home">SmartClamps</span>
       </footer>
 

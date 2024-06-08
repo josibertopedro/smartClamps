@@ -3,6 +3,8 @@ import { FaUser, FaSignOutAlt, FaSearch } from 'react-icons/fa';
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import '../Tutorial/tutorial.css'
+import HeaderContainer from '../../components/HeaderContainer/HeaderContainer';
+import Footer from '../../components/Footer/Footer';
 
 
 function YouTubeVideo ({ videoId, title, description }) {
@@ -14,9 +16,10 @@ function YouTubeVideo ({ videoId, title, description }) {
         src={`https://www.youtube.com/embed/${videoId}`}
         title="YouTube Video"
         frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; autoplay; clipboard-write;
+          encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
-      ></iframe>
+      />
       <div>
         <h2>{title}</h2>
         <p>{description}</p>
@@ -30,19 +33,19 @@ function YouTubeVideo ({ videoId, title, description }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredVideos, setFilteredVideos] = useState([
     {
-      videoId: "dQw4w9WgXcQ",
-      title: "Rick Astley - Never Gonna Give You Up (Official Music Video)",
-      description: "Rick Astley's official music video for 'Never Gonna Give You Up'. Enjoy!"
+      videoId: "UkdpRw4ZG8A",
+      title: "Instrumentação Cirúrgica",
+      description: "Uma breve abordagem introdutória"
     },
     {
-      videoId: "VwufGiIFV5Y",
-      title: "Charlie Puth - Attention [Official Video]",
-      description: "Attention is a song recorded and produced by American singer Charlie Puth. Check it out!"
+      videoId: "rRURsXBfRpk",
+      title: "Instrumentação Cirúrgica",
+      description: "Demanda por especialização"
     },
     {
-      videoId: "7MLzql3pP-s",
-      title: "Ed Sheeran - Shape of You [Official Video]",
-      description: "Shape of You is a song by English singer-songwriter Ed Sheeran. Watch it now!"
+      videoId: "16NaDOmdgmE",
+      title: "Especialização em Instrumentação Cirúrgica",
+      description: "Prática profissional de instrumentação cirúrgica"
     }
   ]);
 
@@ -81,15 +84,9 @@ function YouTubeVideo ({ videoId, title, description }) {
 
   return (
     <>
-      <nav className="navbar">
-        <div className="logo">
-          <img src="/logo" alt="Logo" />
-        </div>
-        <div className="login-icon">
-          <FaUser />
-        </div>
-      </nav>
-      <div className="search-bar">
+      <HeaderContainer />
+      <div className='search-bar-tutorials-box'>
+      <div className="search-bar-tutorials">
         <input
           type="text"
           placeholder="Pesquisar..."
@@ -97,10 +94,14 @@ function YouTubeVideo ({ videoId, title, description }) {
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
         />
-        <FaSearch onClick={handleSearch} />
+        <div className='icon-tutorials'>
+          <FaSearch onClick={handleSearch} />
+        </div>
       </div>
-      <div className="tutorials">
-        <h1>Tutoriais</h1>
+      <h1 className='h1-tutorials'>Tutoriais</h1>
+      </div>
+
+      <div className="tutorials-body">
         <div className="video-grid">
           {filteredVideos.map(video => (
             <YouTubeVideo
@@ -112,14 +113,7 @@ function YouTubeVideo ({ videoId, title, description }) {
           ))}
         </div>
       </div>
-      <footer className="footer">
-        <span className="footer-text">SmartClamps</span>
-      </footer>
-      <div className="logout-button">
-        <button className="button" onClick={handleLogout}>
-          <FaSignOutAlt />Sair
-        </button>
-      </div>
+      <Footer />
     </>
   );
 }

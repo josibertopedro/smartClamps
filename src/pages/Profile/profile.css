@@ -1,69 +1,81 @@
-.body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-.container {
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.container-profile {
     position: relative;
+    width: 75%;
+    margin: 0%;
+    padding: 4%;
+    background-color: #fff;
+    border-radius: 3%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.logo {
-    width: 20%;
-    margin: 20px auto;
-    display: block;
-}
-.back-arrow {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 24px;
-    color: #007bff;
-    cursor: pointer;
-}
+
 .form-container-profile {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    margin-top: 1%;
 }
-.form-group {
+
+.profile-fields {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 75%;
+    padding-right: 10%;
+}
+
+.form-group-profile {
     margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     position: relative; /* Adicionando posição relativa para posicionar o botão absolutamente */
 }
-.form-group label {
+
+.campoComposto1 {
+    max-width: 45%;
+    margin-left: 0%;
+}
+
+.campoComposto2 {
+    max-width: 45%;
+    margin-left: 0%;
+    margin-top: 0%;
+}
+
+.form-group-profile label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
     flex: 0 0 30%;
 }
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="number"],
-.form-group select,
-.form-group textarea {
+
+.form-group-profile input[type="text"],
+.form-group-profile input[type="email"],
+.form-group-profile input[type="number"],
+.form-group-profile select,
+.form-group-profile textarea {
     flex: 1;
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
     margin-right: 10px; /* Adicionando margem entre os campos */
 }
-.form-group input[type="text"]:first-child {
+
+.form-group-profile input[type="text"]:first-child {
     margin-right: 5px; /* Espaço menor entre os campos de texto */
 }
-.form-group select {
+
+.form-group-profile select {
     width: calc(50% - 10px);
 }
-.form-group textarea {
+
+.form-group-profile textarea {
     width: 100%;
     resize: vertical;
 }
-.form-group button {
+
+.form-group-profile button {
     padding: 10px 20px;
     border: none;
     background-color: #007bff;
@@ -72,22 +84,26 @@
     cursor: pointer;
     margin-top: 8px; /* Ajustando a margem superior */
 }
-.photo-upload {
+
+.photo-upload-profile {
     flex: 1 1 auto; /* Tornando o elemento flexível */
     margin-right: 10px; /* Adicionando margem entre os elementos */
     position: relative; /* Adicionando posição relativa para posicionar o botão absolutamente */
 }
-.photo-upload input[type="file"] {
+
+.photo-upload-profile input[type="file"] {
     display: none;
 }
-.photo-upload label {
+
+.photo-upload-profile label {
     display: inline-block;
     padding: 10px;
     background-color: #fff; /* Cor de fundo branca */
     border-radius: 50%; /* Borda arredondada */
     cursor: pointer;
 }
-.photo-upload label img {
+
+.photo-upload-profile label img {
     width: 100px; /* Largura da imagem */
     height: 100px; /* Altura da imagem */
     border-radius: 50%; /* Borda arredondada */

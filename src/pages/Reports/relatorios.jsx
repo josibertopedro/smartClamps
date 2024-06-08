@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import MUIDataTable from "mui-datatables";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Button } from '@mui/material';
 import '../Reports/relatorios.css'
 import { useEffect } from 'react';
 import { db } from '../../services/firebaseConfig.js'
 import { collection, addDoc, getDocs } from 'firebase/firestore';
+import HeaderContainer from '../../components/HeaderContainer/HeaderContainer.jsx';
 
 const customTheme = createTheme({
   overrides: {
@@ -139,6 +139,7 @@ function Relatorios() {
 
   return (
     <ThemeProvider theme={getMuiTheme()}>
+      <HeaderContainer />
       <div className="relatorios-container">
         <h1 className='title-reports'> Relatórios </h1>
       <div className="buttons-reports">

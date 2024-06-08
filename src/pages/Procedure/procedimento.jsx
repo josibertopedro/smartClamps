@@ -6,7 +6,7 @@ function Procedimento() {
     return (
         <div className="container">
             <div className="header">
-                <span className="back-arrow" onClick={() => window.history.back()}>←</span>
+                <span className="back-arrow-procedure" onClick={() => window.history.back()}>←</span>
                 <div className="title">Detalhes do registro</div>
                 <img src={SmartClampLogo} alt="Logo" className="logo-procedure" />
             </div>

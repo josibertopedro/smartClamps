@@ -1,15 +1,18 @@
 .header-container-register {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
 }
 
-.logo-icon-container-register {
+.back-arrow-register {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  /* border-bottom: 1px solid #314290; */
+  position: relative;
+  margin-top: 2%;
+  margin-left: 2%;
+  font-size: 25px;
+  color: black;
+  cursor: pointer;
 }
 
 .logo-register {
@@ -17,6 +20,7 @@
   position: relative;
   max-width: 15%;
   margin: 1%;
+  margin-right: 3%;
 }
 
 .relatorios-container {

@@ -91,6 +91,7 @@
   position: relative;
   width: 30%;
   margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .link-underline-home {
@@ -103,7 +104,7 @@
   text-decoration: underline;
 }
 
-.footer {
+.footer-home {
   display: flex;
   position: relative;
   justify-content: center;
@@ -112,7 +113,7 @@
   padding-left: 10%;
   padding-right: 10%;
   border-top: 1px solid #7B7B7B ;
-  margin-top: 10%;
+  margin-top: 8%;
   font-size: 16px;
   text-align: center;
 }

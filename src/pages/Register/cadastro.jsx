@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { RiArrowGoBackFill } from "react-icons/ri";
 import MUIDataTable from "mui-datatables";
 import Logo from '../../assets/SmartLogo.png'
 import { createTheme, ThemeProvider, TextField, Button, IconButton, Avatar } from '@mui/material';
@@ -275,23 +277,26 @@ function Relatorios() {
   return (
   <>
     <div className="header-container-register">
-        <div className="logo-icon-container-register" />
-        <img src={Logo} alt="Logo" className="logo-register" />
+      <Link to="/home" className="back-arrow-register">
+      <RiArrowGoBackFill />
+      </Link>
+      <img src={Logo} alt="Logo" className="logo-register" /> 
     </div>
+    
     <ThemeProvider theme={customTheme}>
       <div className="relatorios-container">
         <h1 className="title-register"> Cadastros </h1>
-      <div className="buttons-register">
-        <button onClick={() => setShowTabela(1)} variant="contained" className={`toggle-button-register ${showTabela === 1 ? 'active' : ''} `} style={{ }}>
-          PROFISSIONAIS CADASTRADOS
-        </button>
-        <button onClick={() => setShowTabela(2)} variant="contained" className={`toggle-button-register ${showTabela === 2 ? 'active' : ''} `} style={{  }}>
-          NOVO CADASTRO
-        </button>
-      </div>
-      <div className='table-container'>
-        {showTabela === 1 ? <Tabela1 data={cadastros} /> : <Cadastrar />}
-      </div>
+        <div className="buttons-register">
+          <button onClick={() => setShowTabela(1)} variant="contained" className={`toggle-button-register ${showTabela === 1 ? 'active' : ''} `} style={{ }}>
+            PROFISSIONAIS CADASTRADOS
+          </button>
+          <button onClick={() => setShowTabela(2)} variant="contained" className={`toggle-button-register ${showTabela === 2 ? 'active' : ''} `} style={{  }}>
+            NOVO CADASTRO
+          </button>
+        </div>
+        <div className='table-container'>
+          {showTabela === 1 ? <Tabela1 data={cadastros} /> : <Cadastrar />}
+        </div>
       </div>
     </ThemeProvider>
   </>
