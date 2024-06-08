@@ -6,6 +6,9 @@ import { useEffect } from 'react';
 import { db } from '../../services/firebaseConfig.js'
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import HeaderContainer from '../../components/HeaderContainer/HeaderContainer.jsx';
+import LinkIcon from '@mui/icons-material/Link';
+import IconButton from '@mui/material/IconButton';
+import { useNavigate } from 'react-router-dom';
 
 const customTheme = createTheme({
   overrides: {
@@ -50,14 +53,30 @@ function Tabela1({data}) {
 
 function Tabela2({data}) {
 
-
+  const navigate = useNavigate();
 
   const columns = [
     { name: "instituicao", label: "Instituição"},
     { name: "profissionalResp", label: "Profissionais Responsáveis" },
     { name: "inconformidade", label:"Inconformidade" },
     { name: "data", label:"Data"},
-    { name: "situacao", label:"Situação" },
+    { name: "situacao", label:"Situação"  },
+    {
+      name: "",
+      filter: false,
+      sort: false,
+      empty: true,
+      options: {
+        customBodyRender: (value, tableMeta) => {
+          const id = tableMeta.rowIndex;
+          return (
+            <IconButton onClick={() => navigate(`/procedimento/`)}>
+              <LinkIcon />
+            </IconButton>
+          );
+        },
+      },
+    },
   ];
 
   const filteredData2 = data.map(item => ({
