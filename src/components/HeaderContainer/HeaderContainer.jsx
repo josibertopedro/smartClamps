@@ -7,7 +7,7 @@ import '../HeaderContainer/HeaderContainer.css'
 function HeaderContainer () {
     return (
     <div className="header-container">
-      <span className="back-arrow-procedure" 
+      <span className="back-arrow" 
         onClick={() => window.history.back()}>
         <RiArrowGoBackFill />
       </span>

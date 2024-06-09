@@ -4,8 +4,8 @@ import '../RegisterProblem/problem-register.css'
 
 function Problem() {
     return (
-        <div class="container">
-            <div class="header">
+        <div class="container-prob-regis">
+            <div class="header-prob-regis">
                 <div class="logo-prob-reg">
                     <img src={Logo} alt="SmartClamps Logo" />
                 </div>

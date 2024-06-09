@@ -1,4 +1,4 @@
-.container {
+.container-prob-regis {
     background-color: #fff;
     padding: 40px;
     border-radius: 8px;
@@ -8,7 +8,7 @@
     max-width: 600px; /* Limitando a largura máxima */
 }
 
-.header {
+.header-prob-regis {
     margin-bottom: 20px;
 }
 

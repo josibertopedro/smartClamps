@@ -1,20 +1,14 @@
 import React from 'react';
-import { RiArrowGoBackFill } from "react-icons/ri";
-import Logo from '../../assets/SmartLogo.png'
+import procedimento1pincasinicio from '../../assets/procedimento1pincasinicio.png'
+import procedimento1pincasFinal from '../../assets/procedimento1pincasFinal.png'
 import '../Procedure/procedimento.css';
+import HeaderContainer from '../../components/HeaderContainer/HeaderContainer';
 
 function Procedimento() {
     return (
         <>
-            <div className="header-container-procedure">
-                <span className="back-arrow-procedure" 
-                    onClick={() => window.history.back()}>
-                    <RiArrowGoBackFill />
-                </span>
-                <img src={Logo} alt="Logo" className="logo-procedure" />
-            </div>
-
-            <div className="container">
+           <HeaderContainer />
+            <div className="container-procedure">
                 <div className="header">
                     <div className="title">Detalhes do registro</div>
                 </div>
@@ -42,7 +36,7 @@ function Procedimento() {
                 </div>
                 <div className="photos-container">
                     <div className="photo-container">
-                        <img src="pinças 2.png" alt="Foto 1" className="photo" />
+                        <img src= { procedimento1pincasinicio } alt="Foto 1" className="photo" />
                         <div className="text-container">
                             <p>CONTAGEM INICIAL: 80</p>
                             <p>HORA DO REGISTRO: 21:12</p>
@@ -52,7 +46,7 @@ function Procedimento() {
                         </div>
                     </div>
                     <div className="photo-container">
-                        <img src="bandage-operation-tools-bloody-hospital-46755647 3.png" alt="Foto 1" className="photo" />
+                        <img src={ procedimento1pincasFinal } alt="Foto 2" className="photo" />
                         <div className="text-container">
                             <p>CONTAGEM FINAL: 79</p>
                             <p>HORA DO REGISTRO: 22:36</p>

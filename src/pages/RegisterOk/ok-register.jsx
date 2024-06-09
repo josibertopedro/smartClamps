@@ -5,8 +5,8 @@ import './ok-register.css'
 
 function Ok() {
     return (
-        <div class="container">
-            <div class="header">
+        <div class="container-ok-regis">
+            <div class="header-ok-regis">
                 <div class="logo-ok-reg">
                     <img src={Logo} alt="SmartClamps Logo" />
                 </div>

@@ -32,8 +32,8 @@ function Recuperacao() {
 
   return (
     <>
-    <div className="header-container-procedure">
-      <span className="back-arrow-procedure" 
+    <div className="header-container-recuperation">
+      <span className="back-arrow-recuperation" 
         onClick={() => window.history.back()}>
         <RiArrowGoBackFill />
       </span>
@@ -64,7 +64,7 @@ function Recuperacao() {
         </div>
       )}
       <hr className='hr-recuperation' />
-      <p>Não tem uma conta? <a href="/suporte" style={{ color: 'blue', cursor: 'pointer' }}>Toque aqui e saiba como adquirir uma.</a></p>
+      <p>Não tem uma conta? <a href="/suporte" className='a-recuperation'>Toque aqui e saiba como adquirir uma.</a></p>
     </div>
     </>
   );

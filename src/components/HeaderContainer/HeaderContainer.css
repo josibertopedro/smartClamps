@@ -5,7 +5,7 @@
     width: 100%;
   }
   
-  .back-arrow {
+  span.back-arrow {
     display: flex;
     position: relative;
     margin-top: 2%;
