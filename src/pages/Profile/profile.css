@@ -29,7 +29,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    position: relative; /* Adicionando posição relativa para posicionar o botão absolutamente */
+    position: relative;
+
 }
 
 .campoComposto1 {
@@ -41,6 +42,12 @@
     max-width: 45%;
     margin-left: 0%;
     margin-top: 0%;
+}
+
+input #email, #cpf  {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .form-group-profile label {
@@ -78,7 +85,7 @@
 .form-group-profile button {
     padding: 10px 20px;
     border: none;
-    background-color: #007bff;
+    background-color: #5271FF;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -107,4 +114,13 @@
     width: 100px; /* Largura da imagem */
     height: 100px; /* Altura da imagem */
     border-radius: 50%; /* Borda arredondada */
+}
+
+button.edit-password {
+padding: 10px 20px;
+  cursor: pointer;
+  background-color: #5271FF;
+  border: none;
+  border-radius: 5px;
+  color: white;
 }

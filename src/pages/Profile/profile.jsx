@@ -61,7 +61,7 @@ function Profile() {
                             <button type="button" className="edit-password">Editar Senha</button>
                         </div>
                         <div className="form-group-profile">
-                            <button type="submit">Enviar</button>
+                            <button type="submit" className="button-profile">Enviar</button>
                         </div>
                     </form>
             </div>

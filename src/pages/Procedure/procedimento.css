@@ -1,3 +1,28 @@
+.header-container-procedure {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.back-arrow-procedure {
+    display: flex;
+    position: relative;
+    margin-top: 2%;
+    margin-left: 2%;
+    font-size: 25px;
+    color: black;
+    cursor: pointer;
+}
+
+.logo-procedure {
+    display: flex;
+    position: relative;
+    max-width: 15%;
+    margin: 1%;
+    margin-right: 3%;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -14,20 +39,11 @@
     margin-bottom: 20px;
 }
 
-.back-arrow-procedure {
-    margin-right: 10px;
-    font-size: 20px; /* Tamanho da fonte do ícone de seta */
-}
-
 .title {
     flex-grow: 1;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-}
-
-.logo-procedure {
-    width: 100px; /* Defina o tamanho desejado para o logotipo */
 }
 
 .line {
@@ -41,8 +57,10 @@
     border-radius: 8px;
     width: 100%;
     padding: 20px;
-    margin-bottom: 20px; /* Espaço entre o retângulo e as fotos */
-    box-sizing: border-box; /* Incluir padding e borda na largura total */
+    margin-bottom: 20px;
+    /* Espaço entre o retângulo e as fotos */
+    box-sizing: border-box;
+    /* Incluir padding e borda na largura total */
 }
 
 .procedure-info {
@@ -59,21 +77,25 @@
 
 .photos-container {
     display: flex;
-    justify-content: center; /* Centralizar as fotos horizontalmente */
+    justify-content: center;
+    /* Centralizar as fotos horizontalmente */
     width: 100%;
-    margin-bottom: 20px; /* Espaço entre o retângulo e as fotos */
+    margin-bottom: 20px;
+    /* Espaço entre o retângulo e as fotos */
 }
 
 .photo-container {
     text-align: center;
-    margin: 0 10px; /* Espaço entre as fotos */
+    margin: 0 10px;
+    /* Espaço entre as fotos */
 }
 
 .photo {
     width: 150px;
     height: 150px;
     border: 1px solid #ccc;
-    margin-bottom: 10px; /* Espaçamento entre a foto e o texto */
+    margin-bottom: 10px;
+    /* Espaçamento entre a foto e o texto */
 }
 
 .text-container {
@@ -84,7 +106,8 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-bottom: 10px; /* Espaço entre os botões e a linha */
+    margin-bottom: 10px;
+    /* Espaço entre os botões e a linha */
 }
 
 .blue-button {
@@ -92,8 +115,9 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px; /* Espaçamento entre a foto e o botão */
-    background-color: blue;
+    margin-top: 10px;
+    /* Espaçamento entre a foto e o botão */
+    background-color: #5271FF;
     color: white;
 }
 
@@ -102,12 +126,14 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px; /* Espaçamento entre a foto e o botão */
+    margin-top: 10px;
+    /* Espaçamento entre a foto e o botão */
     background-color: green;
     color: white;
 }
 
 .smartclamps-text {
-    margin-top: 10px; /* Espaço entre a linha e o texto */
+    margin-top: 10px;
+    /* Espaço entre a linha e o texto */
     font-style: italic;
 }

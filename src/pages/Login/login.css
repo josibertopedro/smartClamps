@@ -107,7 +107,7 @@
   text-align: center;
 }
 
-.circle-container {
+.circle-container-login {
   top: 60%;
   position: absolute;
   left: 0;
@@ -115,7 +115,7 @@
   z-index: 1;
 }
 
-.circle {
+.circle-login {
   float: left;
   display: flex;
   width: 160px;
@@ -125,7 +125,7 @@
   clip-path: circle(50% at 0%);
 }
 
-.circle-container-2 {
+.circle-container-2-login {
   top: 30%;
   position: absolute;
   right: 0;
@@ -134,7 +134,7 @@
   
 }
 
-.circle-2 {
+.circle-2-login {
   float: left;
   display: flex;
   width: 160px;

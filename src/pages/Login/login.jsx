@@ -111,11 +111,11 @@ function LoginForm() {
       </div>
 
       {/* Parte estética */}
-      <div className="circle-container">
-        <div className="circle"></div>
+      <div className="circle-container-login">
+        <div className="circle-login"></div>
       </div>
-      <div className="circle-container-2">
-        <div className="circle-2"></div>
+      <div className="circle-container-2-login">
+        <div className="circle-2-login"></div>
       </div>
 
     </div> 
