@@ -4,11 +4,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import '../Reports/relatorios.css'
 import { useEffect } from 'react';
 import { db } from '../../services/firebaseConfig.js'
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc, deleteDoc, getDocs, doc, Timestamp } from 'firebase/firestore';
 import HeaderContainer from '../../components/HeaderContainer/HeaderContainer.jsx';
 import LinkIcon from '@mui/icons-material/Link';
 import IconButton from '@mui/material/IconButton';
+import CheckIcon from '@mui/icons-material/Check';
 import { useNavigate } from 'react-router-dom';
+import ModalConfirmation from '../../components/ModalConfirmation/ModalConfirmation';
 
 const customTheme = createTheme({
   overrides: {
@@ -24,7 +26,7 @@ const customTheme = createTheme({
 function Tabela1({data}) {
 
   const columns = [
-    { name: "profissionaisResp", label: "Profissionais Responsáveis" },
+    { name: "profissionalResp", label: "Profissionais Responsáveis" },
     { name: "especialidade", label: "Especialidade"  },
     { name: "situacao", label: "Situação" },
     { name: "data", label: "Data" },
@@ -35,7 +37,7 @@ function Tabela1({data}) {
   };
 
   const filteredData = data.map(item => ({
-    profissionaisResp: item.profissionaisResp,
+    profissionalResp: item.profissionalResp,
     especialidade: item.especialidade,
     situacao: item.situacao,
     data: item.data ? new Date(item.data.seconds * 1000).toLocaleDateString() : '',
@@ -51,9 +53,10 @@ function Tabela1({data}) {
   );
 }
 
-function Tabela2({data}) {
+function Tabela2({data, onValidate}) {
 
   const navigate = useNavigate();
+  const [selectedRow, setSelectedRow] = useState(null);
 
   const columns = [
     { name: "instituicao", label: "Instituição"},
@@ -70,9 +73,14 @@ function Tabela2({data}) {
         customBodyRender: (value, tableMeta) => {
           const id = tableMeta.rowIndex;
           return (
+            <div>
             <IconButton onClick={() => navigate(`/procedimento/`)}>
               <LinkIcon />
             </IconButton>
+            <IconButton onClick={() => setSelectedRow(id)}>
+            <CheckIcon /> {/* Ícone de validação */}
+          </IconButton>
+          </div>
           );
         },
       },
@@ -92,12 +100,26 @@ function Tabela2({data}) {
   };
 
   return (
+    <>
     <MUIDataTable
       title={"Inconformidades"}
       data={filteredData2}
       columns={columns}
       options={options}
     />
+    {selectedRow !== null && (
+      <ModalConfirmation 
+        open={selectedRow !== null}
+        onClose={() => setSelectedRow(null)}
+        onConfirm={() => {
+          onValidate(filteredData2[selectedRow]);
+          setSelectedRow(null);
+        }}
+      />
+    )}
+  </>
+    
+    
   );
 }
 
@@ -120,6 +142,47 @@ function Relatorios() {
     fetchData2()
     fetchData()
   }, [])
+
+  const formatDate = (date) => {
+    return date.toLocaleString('pt-BR', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      timeZone: 'America/Sao_Paulo'
+    }) + ' UTC-3';
+  };
+
+
+  const handleValidate = async (rowData) => {
+    try {
+
+
+      const HOJE = Timestamp.now();
+
+      const formattedData = {
+        profissionalResp: rowData.profissionalResp,
+        especialidade: 'Especialidade Exemplo', // Substitua pelo valor apropriado
+        situacao: 'Validado',
+        data: HOJE,
+      };
+      // Adiciona à coleção de procedimentos
+      await addDoc(collection(db, 'procedimentos'), formattedData);
+      // Remove da coleção de inconformidades
+      const querySnapshot = await getDocs(collection(db, 'inconformidades'));
+      const docToDelete = querySnapshot.docs.find(doc => doc.data().inconformidade === rowData.inconformidade);
+      if (docToDelete) {
+        await deleteDoc(doc(db, 'inconformidades', docToDelete.id));
+      }
+      // Atualiza os estados
+      setProcedimentos([...procedimentos, formattedData]);
+      setInconformidade(inconformidade.filter(item => item.inconformidade !== rowData.inconformidade));
+    } catch (error) {
+      console.error("Erro ao mover documento: ", error);
+    }
+  };
 
   const getMuiTheme = () => createTheme({
     components: {
@@ -170,7 +233,7 @@ function Relatorios() {
         </button>
         </div>
       <div className='table-container'>
-        {showTabela === 1 ? <Tabela1 data={procedimentos} /> : <Tabela2 data={inconformidade} />}
+        {showTabela === 1 ? <Tabela1 data={procedimentos} /> : <Tabela2 data={inconformidade} onValidate={handleValidate}/>}
       </div>
       </div>
     </ThemeProvider>
