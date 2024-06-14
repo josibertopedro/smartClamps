@@ -23,8 +23,27 @@ function LoginForm() {
 
   const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+
+      // Limpa o localStorage antes de salvar novos dados
+      localStorage.removeItem('user');
+
+      // Salva os novos dados do usuário no localStorage
+      localStorage.setItem('user', JSON.stringify({
+        email: user.email,
+        uid: user.uid,
+        // outros dados que deseja salvar
+      }));
+
+
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+      setAlert({ type: 'error', message: 'Erro ao fazer login.' });
+    }
     signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         if (userCredential.user) {

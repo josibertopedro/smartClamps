@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { RiArrowGoBackFill } from "react-icons/ri";
 import MUIDataTable from "mui-datatables";
 import Logo from '../../assets/SmartLogo.png'
-import { createTheme, ThemeProvider, TextField, Button, IconButton, Avatar } from '@mui/material';
+import { createTheme, ThemeProvider, TextField, Button, IconButton, Avatar, useRadioGroup } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import '../Register/cadastro.css'
-import { db } from '../../services/firebaseConfig.js'
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { db, auth } from '../../services/firebaseConfig.js'
+import { collection, addDoc, getDocs, setDoc, doc } from 'firebase/firestore';
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const customTheme = createTheme({
   components: {
@@ -129,8 +130,19 @@ function Cadastrar() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const { email, senha, confirmarSenha } = formValues;
+
+    if (senha !== confirmarSenha) {
+      console.error("As senhas não coincidem");
+      return;
+    }
+
     try {
-      await addDoc(collection(db, 'professionals'), {
+
+      const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+      const user = userCredential.user;
+      
+      await setDoc(doc(db, 'professionals', user.uid), {
         nomeCompleto: formValues.nomeCompleto,
         email: formValues.email,
         cpf: formValues.cpf,

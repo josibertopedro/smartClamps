@@ -59,9 +59,9 @@ function Tabela2({data, onValidate}) {
   const [selectedRow, setSelectedRow] = useState(null);
 
   const columns = [
-    { name: "instituicao", label: "Instituição"},
     { name: "profissionalResp", label: "Profissionais Responsáveis" },
-    { name: "inconformidade", label:"Inconformidade" },
+    { name: "especialidade", label: "Especialidade"  },
+    { name: "inconformidade", label: "Inconformidade"  },
     { name: "data", label:"Data"},
     { name: "situacao", label:"Situação"  },
     {
@@ -90,7 +90,7 @@ function Tabela2({data, onValidate}) {
   const filteredData2 = data.map(item => ({
     profissionalResp: item.profissionalResp,
     inconformidade: item.inconformidade,
-    instituicao: item.instituicao,
+    especialidade: item.especialidade,
     situacao: item.situacao,
     data: item.data ? new Date(item.data.seconds * 1000).toLocaleDateString() : '',
   }));
@@ -164,7 +164,7 @@ function Relatorios() {
 
       const formattedData = {
         profissionalResp: rowData.profissionalResp,
-        especialidade: 'Especialidade Exemplo', // Substitua pelo valor apropriado
+        especialidade: rowData.especialidade, // Substitua pelo valor apropriado
         situacao: 'Validado',
         data: HOJE,
       };
